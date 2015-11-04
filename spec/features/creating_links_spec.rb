@@ -1,3 +1,6 @@
+require 'database_cleaner'
+
+
 feature 'Creating new links' do
   scenario 'fill in form' do
     visit('/links/new')
