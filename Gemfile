@@ -5,4 +5,5 @@ ruby '2.2.3'
 
 gem 'rspec'
 gem 'capybara'
-gem 'datamapper'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
