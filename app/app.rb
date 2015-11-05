@@ -1,6 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require './app/models/link'
+require './app/models/user'
 require 'sinatra/base'
 require './data_mapper_setup'
 
@@ -38,6 +39,18 @@ class BookmarkManager < Sinatra::Base
   post '/tags' do
     name = params[:name]
     redirect "/tags/#{name}"
+  end
+
+  get '/users/new' do
+    erb :'/users/new'
+  end
+
+  post '/users' do
+    @username = params[:username]
+    @email = params[:email]
+    @password = params[:password]
+    @user = User.create(username: @username, email: @email, password: @password)
+    erb :'/users/new'
   end
 
   # start the server if ruby file executed directly
