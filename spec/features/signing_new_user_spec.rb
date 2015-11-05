@@ -5,6 +5,6 @@ feature "Signing new user" do
     fill_in :password, with: "password"
     fill_in :email, with: "Dave.Surname@email.com"
     click_button('Submit')
-    expect(page).to have_content('Welcome Dave')
+    expect(page).to have_content('Welcome, Dave')
   end
 end
