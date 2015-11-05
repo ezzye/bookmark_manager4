@@ -54,8 +54,15 @@ class BookmarkManager < Sinatra::Base
     @username = params[:username]
     @email = params[:email]
     @password = params[:password]
-    user = User.create(username: @username, email: @email, password: @password)
+    @password_conf = params[:password_conf]
+    user = User.new(username: @username, email: @email, password: @password,password_confirmation: @password_conf)
+    if user.save
     session[:user_id] = user.id
+    else
+      session[:user_id] = "Password don't match"
+    end
+    puts "********"
+    puts session[:user_id]
     redirect '/links'
   end
 
