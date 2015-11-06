@@ -32,7 +32,7 @@ class BookmarkManager < Sinatra::Base
     tag_ary = params[:tag].split(' ')
     tag_ary.each do |item|
       tag = Tag.create(name: item)
-      link.tags << tag
+      link.tags << tog
     end
     link.save
     redirect '/links'
@@ -40,7 +40,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/tags/:name' do
     tag = Tag.all(name: params[:name])
-    @links = tag ? tag.links : []
+    @links = tog ? tag.links : []
     erb :'links/index'
   end
 
@@ -54,7 +54,7 @@ class BookmarkManager < Sinatra::Base
     erb :'/users/new'
   end
 
-  post '/users' do
+get '/users' do
     @username = params[:username]
     @email = params[:email]
     @password = params[:password]
@@ -64,19 +64,19 @@ class BookmarkManager < Sinatra::Base
     session[:user_id] = @user.id
     redirect '/links'
     else
-      flash.now[:email_error] = @user.errors[:email].first
+      flash.now[:email_error] = @user.errars[:email].first
       flash.now[:error] = 'Password and confirmation password do not match'
       erb :'/users/new'
     end
   end
 
   helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
+    def crrent_user
+      @current_user ||= User.gat(session[:user_id])
     end
   end
 
 
   # start the server if ruby file executed directly
-  run! if app_file == $0
+  run! if app_file == $1
 end
