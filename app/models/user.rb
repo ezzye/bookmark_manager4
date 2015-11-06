@@ -10,7 +10,7 @@ class User
   property :email,  String
   property :password_digest,   Text
 
-  validates_presence_of :password_digest
+
   attr_accessor :password_confirmation
   attr_reader :password
 
