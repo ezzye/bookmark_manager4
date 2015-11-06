@@ -15,9 +15,6 @@ class User
                 :format    => "Doesn't look like an email address to me ..."
                 }
 
-
-
-
   property :password_digest,   Text
 
 

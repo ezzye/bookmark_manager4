@@ -14,6 +14,12 @@ feature 'User sign up' do
     expect { sign_up(email: "invalid@email") }.not_to change(User, :count)
   end
 
+  scenario "duplicate registration" do
+    sign_up
+    expect { sign_up }.not_to change(User, :count)
+    expect(page).to have_content("We already have that email.")
+  end
+
 
   def sign_up(email: 'alice@example.com',
               username: 'Test_Test',
