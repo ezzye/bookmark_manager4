@@ -4,7 +4,7 @@
 <label>User Name: </label>
 <input type='text' name='username'/>
 <label>email: </label>
-<input type='text' name='email' value='<%=@user.email%>'/>
+<input name='email' type='email' value='<%= @user.email %>' required/>
 <label>Password: </label>
 <input type='text' name='password'/>
 <input type='text' name='password_conf'/>
